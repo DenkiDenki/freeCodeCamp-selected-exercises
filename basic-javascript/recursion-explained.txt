@@ -1,0 +1,49 @@
+Realise that every execution of countup will have its own n and countArray variables.
+
+It may help to visualise it. Each execution context is visualised as a "box". The variables in the outer boxes will still be there, when a function call returns.
+
+The outermost box is the execution context that is created by the initial call: countup(5):
+
+-Date cuenta de que cada ejecución de countup tendrá sus propias variables n y countArray.
+
+Puede ayudar a visualizarlo. Cada contexto de ejecución se visualiza como una "caja". Las variables en las cajas exteriores seguirán estando ahí, cuando una llamada a la función regrese.
+
+La caja más externa es el contexto de ejecución que es creado por la llamada inicial: countup(5):
+
+// n is 5 and does not change
+const countArray = countup(n - 1);
++-------------------------------------------------------------------------------+
+|  // n is 4 and does not change                                                |
+|  const countArray = countup(n - 1);                                           |
+|  +-------------------------------------------------------------------------+  |
+|  |  // n is 3 and does not change                                          |  |
+|  |  const countArray = countup(n - 1);                                     |  |
+|  |  +-------------------------------------------------------------------+  |  |
+|  |  |  // n is 2 and does not change                                    |  |  |
+|  |  |  const countArray = countup(n - 1);                               |  |  |
+|  |  |  +-------------------------------------------------------------+  |  |  |
+|  |  |  |  // n is 1 and does not change                              |  |  |  |
+|  |  |  |  const countArray = countup(n - 1);                         |  |  |  |
+|  |  |  |  +-------------------------------------------------------+  |  |  |  |
+|  |  |  |  |  // n is 0 and does not change                        |  |  |  |  |
+|  |  |  |  |  return []; // the if-block is executed because n < 1 |  |  |  |  |
+|  |  |  |  +-------------------------------------------------------+  |  |  |  |
+|  |  |  |  // countArray is []                                        |  |  |  |
+|  |  |  |  countArray.push(n); // n is still 1                        |  |  |  |
+|  |  |  |  return countArray; // returns [1]                          |  |  |  |
+|  |  |  +-------------------------------------------------------------+  |  |  |
+|  |  |  // countArray is [1]                                             |  |  |
+|  |  |  countArray.push(n); // n is still 2                              |  |  |
+|  |  |  return countArray; // returns [1, 2]                             |  |  |
+|  |  +-------------------------------------------------------------------+  |  |
+|  |  // countArray is [1, 2]                                                |  |
+|  |  countArray.push(n); // n is still 3                                    |  |
+|  |  return countArray; // returns [1, 2, 3]                                |  |
+|  +-------------------------------------------------------------------------+  |
+|  // countArray is [1, 2, 3]                                                   |
+|  countArray.push(n); // n is still 4                                          |
+|  return countArray; // returns [1, 2, 3, 4]                                   |
++-------------------------------------------------------------------------------+
+// countArray is [1, 2, 3, 4]
+countArray.push(n); // n is still 5
+return countArray; // returns [1, 2, 3, 4, 5]

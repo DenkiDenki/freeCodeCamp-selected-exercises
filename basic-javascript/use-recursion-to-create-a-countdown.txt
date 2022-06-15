@@ -1,0 +1,23 @@
+// Only change code below this line
+function countdown(n){
+ if (n < 1) return []; 
+    const countArray = countdown(n - 1);
+    console.log("numero vale "+ n + " arr menos 1: ["+ countArray+"] - se agrega adelante ");
+    countArray.unshift(n);
+    return countArray;
+  
+}
+function countup(n){
+ if (n < 1) return []; 
+    const countArray = countup(n - 1);
+    console.log("numero vale "+ n + " arr menos 1: ["+ countArray+"] - se agrega atrás");
+    countArray.push(n);
+    return countArray;
+  
+}
+console.log(countdown(5));
+console.log("-------------")
+console.log(countup(5));
+//console.log(countdown(10));
+//console.log(countdown(1));
+// Only change code above this line

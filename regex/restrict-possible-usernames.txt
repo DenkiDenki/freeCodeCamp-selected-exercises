@@ -1,0 +1,41 @@
+let username = "JackOfAllTrades";
+let userCheck = /^[a-z][a-z]+\d*$|^[a-z]\d\d+$/i; // Change this line
+/*
+comienza con 2 o más caracteres alfabéticos "^[a-z][a-z]+" 
+termina con cero o más caracteres numéricos"\d*$"
+ó "|"
+comienza con 1 o más caracteres alfabéticos "^[a-z]"
+termina con 2 o más carácteres numéricos "\d\d+$"
+no distingue entre mayusculas y minusculas*/
+
+let result = userCheck.test(username);
+
+//console.log(result);
+console.log("a "+ userCheck.test("JACK"));
+console.log("b "+userCheck.test("J"));
+console.log("c "+userCheck.test("Jo"));
+console.log("d "+userCheck.test("Oceans11"));
+console.log("e "+userCheck.test("RegexGuru"));
+console.log("f "+userCheck.test("007"));
+console.log("g "+userCheck.test("9"));
+console.log("h "+userCheck.test("A1"));
+console.log("i "+ userCheck.test("BadUs3rnam3"));
+console.log("j "+userCheck.test("Z97"));
+console.log("k "+userCheck.test("c57bT3"));
+console.log("l "+userCheck.test("AB1"));
+console.log("m "+userCheck.test("J%4"));
+
+/*Restrict Possible Usernames
+Usernames are used everywhere on the internet. They are what give users a unique identity on their favorite sites.
+
+You need to check all the usernames in a database. Here are some simple rules that users have to follow when creating their username.
+
+Usernames can only use alpha-numeric characters.
+
+The only numbers in the username have to be at the end. There can be zero or more of them at the end. Username cannot start with the number.
+
+Username letters can be lowercase and uppercase.
+
+Usernames have to be at least two characters long. A two-character username can only use alphabet letters as characters.
+
+Change the regex userCheck to fit the constraints listed above.*/
